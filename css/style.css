@@ -31,12 +31,37 @@ h1 {
     margin-top: 100px;
 }
 
+@media screen and (max-width: 992px){
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px){
+    header {
+        flex-direction: column;
+    }
+    h1 {
+        width: 100%;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .logo{
+        margin: 20px auto;
+    }
+    .photographer_section {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+}
+
 .photographer_section article {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .photographer_section article h2 {
@@ -61,14 +86,14 @@ h1 {
 }
 
 .photographer_section article .resume {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
     color: #000000;
     line-height: 13px;
 }
 
 .photographer_section article .dailyRate {
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 400;
     color: #757575;
     line-height: 12px;
