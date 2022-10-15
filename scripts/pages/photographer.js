@@ -11,6 +11,15 @@ async function getPhotographer(){
     return photographer;
 }
 
+async function getPhotographerMedias(){
+    const data = await (await fetch('../../data/photographers.json')).json();
+    const photographerMedias = data.media.filter((media) => media.photographerId == photographerId);
+
+    return photographerMedias
+} 
+
+getPhotographerMedias()
+
 async function displayData(photographer){
     const photographerHeader = document.querySelector('.photograph-header');
     const contactButton = document.querySelector('.contact_button');
