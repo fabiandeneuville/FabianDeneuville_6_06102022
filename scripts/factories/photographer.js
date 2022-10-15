@@ -4,6 +4,7 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
+
         const article = document.createElement( 'article' );
 
         const img = document.createElement( 'img' );
@@ -32,6 +33,31 @@ function photographerFactory(data) {
         article.appendChild(dailyRate);
 
         return (article);
+
     }
-    return { name, picture, getUserCardDOM }
+
+    function getPhotographerInfoDOM(){
+
+        const photographerName = document.createElement('h1');
+        photographerName.textContent = name;
+
+        const photographerLocation = document.createElement('h2');
+        photographerLocation.textContent = `${city}, ${country}`;
+        photographerLocation.classList.add('location');
+
+        const photographerTagline = document.createElement('p');
+        photographerTagline.textContent = tagline;
+        photographerTagline.classList.add('tagline');
+
+        const photographerInfos = document.createElement('div');
+
+        photographerInfos.appendChild(photographerName);
+        photographerInfos.appendChild(photographerLocation);
+        photographerInfos.appendChild(photographerTagline);
+
+        return photographerInfos;
+        
+    }
+
+    return { name, picture, location, tagline, getUserCardDOM, getPhotographerInfoDOM }
 }
