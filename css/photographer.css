@@ -77,13 +77,13 @@
     position: fixed;
     bottom: 0px;
     right: 1%;
-    width: 280px;
     display: flex;
     justify-content: space-between;
     padding: 10px;
     background-color: #DB8876;
     border-radius: 10px 10px 0px 0px;
     font-size: 24px;
+    gap: 80px;
 }
 
 .contact_button {
@@ -99,10 +99,24 @@
     cursor: pointer;
 }
 
+#contact_modal {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0,0,0,0.5);
+}
+
 .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 90%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,6 +127,7 @@
 
 .modal header {
     justify-content: space-between;
+    height: auto;
     width: 100%;
 }
 
@@ -121,9 +136,11 @@
 }
 
 .modal header h2 {
+    width: 100%;
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    margin: 0;
 }
 
 form {
@@ -135,7 +152,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 30px;
 }
 
 form div {
@@ -147,10 +164,20 @@ form div {
 }
 
 form input {
+    height: 50px;
+}
+
+form textarea {
+    height: 120px;
+    resize: none;
+}
+
+form input, textarea {
     width: 100%;
-    height: 68px;
     border: none;
     border-radius: 5px;
+    padding: 5px;
+    font-size: 24px;
 }
 
 @media screen and (max-width:992px){
@@ -162,5 +189,41 @@ form input {
     }
     .photograph-header h1 {
         font-size: 40px;
+    }
+    .modal {
+        padding: 10px;
+    }
+    .modal header {
+        flex-direction: row;
+    }
+    .modal header img {
+        width: 30px;
+        height: 30px;
+    }
+    .modal header h2 {
+        font-size: 48px;
+    }
+    form label {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .modal {
+        max-width: 300px;
+    }
+    .modal header h2 {
+        font-size: 24px;
+    }
+    .modal header img {
+        width: 24px;
+        height: 24px;
+    }
+    form label {
+        font-size: 16px;
+    }
+    form input {
+        height: 40px;
+        font-size: 16px;
     }
 }

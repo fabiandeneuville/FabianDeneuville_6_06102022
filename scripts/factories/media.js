@@ -31,7 +31,7 @@ function mediaFactory(data){
             source.setAttribute('type', 'video/mp4');
             const error = document.createElement('p');
             error.innerText = "Votre navigateur ne permet pas l'affichage de ce media.";
-            mediaMiniature.setAttribute('controls', '');
+            mediaMiniature.setAttribute('autoplay', '');
             mediaMiniature.classList.add('media-miniature');
             mediaMiniature.appendChild(source);
             mediaMiniature.appendChild(error);
