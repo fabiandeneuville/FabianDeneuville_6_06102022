@@ -1,5 +1,3 @@
-//Mettre le code JavaScript lié à la page photographer.html
-
 let params = new URL(document.location).searchParams;
 let photographerId = params.get('id');
 
@@ -35,13 +33,28 @@ async function displayData(photographer, medias){
     const mediasContainer = document.createElement('div');
     mediasContainer.classList.add('media-container');
 
+    let totalLikes = 0;
+
     medias.forEach((media) => {
         const medialModel = mediaFactory(media);
         const mediaCard = medialModel.getPhotographerDom();
         mediasContainer.appendChild(mediaCard);
+        totalLikes += media.likes
     })
 
     main.appendChild(mediasContainer);
+
+    const infosBlock = document.createElement('div');
+    infosBlock.classList.add('info-block');
+    const infosBlocksLikes = document.createElement('span');
+    infosBlocksLikes.innerHTML = `<span>${totalLikes}</span> <i class="fa-solid fa-heart"></i>`
+    const infosBlockRates = document.createElement('span');
+    infosBlockRates.textContent = `${photographer.price}€ / jour`
+
+    infosBlock.appendChild(infosBlocksLikes);
+    infosBlock.appendChild(infosBlockRates);
+
+    main.appendChild(infosBlock)
 }
 
 async function init(){
