@@ -47,7 +47,7 @@ async function displayData(photographer, medias){
     const infosBlock = document.createElement('div');
     infosBlock.classList.add('info-block');
     const infosBlocksLikes = document.createElement('span');
-    infosBlocksLikes.innerHTML = `<span>${totalLikes}</span> <i class="fa-solid fa-heart"></i>`
+    infosBlocksLikes.innerHTML = `<span>${totalLikes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>`
     const infosBlockRates = document.createElement('span');
     infosBlockRates.textContent = `${photographer.price}€ / jour`
 

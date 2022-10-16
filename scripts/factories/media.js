@@ -11,7 +11,7 @@ function mediaFactory(data){
         mediaTitle.innerText = title;
     
         const medialLikes = document.createElement('span');
-        medialLikes.innerHTML = `<span>${likes}</span> <i class="fa-solid fa-heart"></i>`;
+        medialLikes.innerHTML = `<span>${likes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>`;
         medialLikes.classList.add('likes');
 
         mediaInfos.appendChild(mediaTitle);
