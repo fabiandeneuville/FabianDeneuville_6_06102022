@@ -16,6 +16,7 @@ function openSlideShow(media, index, medias){
     currentIndex = index
 
     slideshowModal.style.display = "block"
+    slideshowCloseButton.focus()
     title.textContent = medias[index].title
 
     if(media.image){
@@ -32,8 +33,11 @@ function openSlideShow(media, index, medias){
 }
 
 slideshowCloseButton.addEventListener('click', closeSlideshow);
+slideshowCloseButton.addEventListener('keypress', closeSlideshow);
 previousButton.addEventListener('click', showPrevious);
+previousButton.addEventListener('keypress', showPrevious);
 nextButton.addEventListener('click', showNext);
+nextButton.addEventListener('keypress', showNext);
 
 function showPrevious(){
     if(currentIndex > 0){
