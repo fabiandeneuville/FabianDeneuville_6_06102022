@@ -3,61 +3,32 @@ function photographerFactory(data) {
 
     const picture = `assets/images/photographers/${portrait}`;
 
-    function getUserCardDOM() {
+    function getPhotographerProfileCard() {
 
         const article = document.createElement( 'article' );
 
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", `Portrait du photographe ${name}`);
-
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-
-        const location = document.createElement('p');
-        location.classList.add('location');
-        location.textContent = `${city}, ${country}`;
-
-        const resume = document.createElement('p');
-        resume.classList.add('resume');
-        resume.textContent = tagline;
-
-        const dailyRate = document.createElement('p');
-        dailyRate.classList.add('dailyRate');
-        dailyRate.textContent = `${price}€/jour`;
-
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(location);
-        article.appendChild(resume);
-        article.appendChild(dailyRate);
-
-        return (article);
+        article.innerHTML = `
+            <img src="${picture}" alt="Portrait du photographe ${name}"/>
+            <h2>${name}</h2>
+            <p class="location">${city}, ${country}</p>
+            <p class="resume">${tagline}</p>
+            <p class="dailyRate">${price}€/jour</p>
+        `
+        return article;
 
     }
 
-    function getPhotographerInfoDOM(){
-
-        const photographerName = document.createElement('h1');
-        photographerName.textContent = name;
-
-        const photographerLocation = document.createElement('h2');
-        photographerLocation.textContent = `${city}, ${country}`;
-        photographerLocation.classList.add('location');
-
-        const photographerTagline = document.createElement('p');
-        photographerTagline.textContent = tagline;
-        photographerTagline.classList.add('tagline');
-
+    function getPhotographerProfileHeader(){
+        
         const photographerInfos = document.createElement('div');
-
-        photographerInfos.appendChild(photographerName);
-        photographerInfos.appendChild(photographerLocation);
-        photographerInfos.appendChild(photographerTagline);
-
+        photographerInfos.innerHTML = `
+            <h1>${name}</h1>
+            <h2 class="location">${city}, ${country}</h2>
+            <p class="tagline">${tagline}</p>
+        `
         return photographerInfos;
 
     }
 
-    return { name, picture, location, tagline, getUserCardDOM, getPhotographerInfoDOM }
+    return { name, picture, location, tagline, getPhotographerProfileCard, getPhotographerProfileHeader }
 }

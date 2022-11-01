@@ -1,48 +1,39 @@
 function mediaFactory(data){
     const {id, image, likes, price, title, date, photographerId, video} = data;
 
-    function getPhotographerDom(){
-        const article = document.createElement('article');
-        const mediaInfos = document.createElement('div');
-        mediaInfos.classList.add('media-infos');
+    function getPhotographerMediaCards(){
 
-        const mediaTitle = document.createElement('span');
-        mediaTitle.classList.add('title');
-        mediaTitle.innerText = title;
-    
-        const medialLikes = document.createElement('span');
-        medialLikes.innerHTML = `<span>${likes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>`;
-        medialLikes.classList.add('likes');
+        const mediaCard = document.createElement('div');
+        mediaCard.classList.add('media-card')
 
-        mediaInfos.appendChild(mediaTitle);
-        mediaInfos.appendChild(medialLikes);
-    
         if(image){
-            const mediaMiniature = document.createElement('img');
-            mediaMiniature.setAttribute('src', `../../assets/images/medias/${image}`);
-            mediaMiniature.setAttribute('alt', `Image avec pour titre ${title}`);
-            mediaMiniature.classList.add('media-miniature');
-            article.appendChild(mediaMiniature);
+            mediaCard.innerHTML = `
+            <img class="media-miniature" src="../../assets/images/medias/${image}" alt="Image avec pour titre ${title}"/>
+            <div class="media-infos">
+                <span class="title">${title}</span>
+                <span class="likes">
+                    <span>${likes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>
+                </span>
+            </div>
+            `
+            return mediaCard
         }
         if(video){
-            const mediaMiniature = document.createElement('video');
-            const source = document.createElement('source');
-            source.setAttribute('src', `../../assets/images/medias/${video}`);
-            source.setAttribute('type', 'video/mp4');
-            const error = document.createElement('p');
-            error.innerText = "Votre navigateur ne permet pas l'affichage de ce media.";
-            mediaMiniature.setAttribute('autoplay', '');
-            mediaMiniature.classList.add('media-miniature');
-            mediaMiniature.appendChild(source);
-            mediaMiniature.appendChild(error);
-            article.appendChild(mediaMiniature);
+            mediaCard.innerHTML = `
+            <video class="media-miniature" autoplay>
+                <source src="../../assets/images/medias/${video}" type="video/mp4">
+                <p>Votre navigateur ne permet pas l'affichage de ce media.</p>
+            </video>
+            <div class="media-infos">
+                <span class="title">${title}</span>
+                <span class="likes">
+                    <span>${likes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>
+                </span>
+            </div>
+            `
+            return mediaCard
         }
-
-        article.appendChild(mediaInfos);
-        article.classList.add('media-article');
-        return article;
-
     }
 
-    return { getPhotographerDom };
+    return { getPhotographerMediaCards };
 }

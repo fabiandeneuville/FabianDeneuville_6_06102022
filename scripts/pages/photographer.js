@@ -21,7 +21,7 @@ async function displayData(photographer, medias){
     const photographerHeader = document.querySelector('.photograph-header');
     const contactButton = document.querySelector('.contact_button');
     const photographerModel = photographerFactory(photographer);
-    const photographerInfos = photographerModel.getPhotographerInfoDOM();
+    const photographerInfos = photographerModel.getPhotographerProfileHeader();
     photographerHeader.insertBefore(photographerInfos, contactButton);
 
     const photographerImage = document.createElement('img');
@@ -37,7 +37,7 @@ async function displayData(photographer, medias){
 
     medias.forEach((media) => {
         const medialModel = mediaFactory(media);
-        const mediaCard = medialModel.getPhotographerDom();
+        const mediaCard = medialModel.getPhotographerMediaCards();
         mediasContainer.appendChild(mediaCard);
         totalLikes += media.likes
     })
@@ -46,13 +46,11 @@ async function displayData(photographer, medias){
 
     const infosBlock = document.createElement('div');
     infosBlock.classList.add('info-block');
-    const infosBlocksLikes = document.createElement('span');
-    infosBlocksLikes.innerHTML = `<span>${totalLikes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>`
-    const infosBlockRates = document.createElement('span');
-    infosBlockRates.textContent = `${photographer.price}€ / jour`
 
-    infosBlock.appendChild(infosBlocksLikes);
-    infosBlock.appendChild(infosBlockRates);
+    infosBlock.innerHTML = `
+        <span>${totalLikes}<i aria-label="likes" class="fa-solid fa-heart"></i></span>
+        <span>${photographer.price}€ / jour</span>
+    `
 
     main.appendChild(infosBlock)
 }
