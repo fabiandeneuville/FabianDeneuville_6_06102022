@@ -22,6 +22,7 @@ function openSlideShow(media, index, medias){
         image.style.display = 'block'
         video.style.display = 'none'
         image.setAttribute('src', `../../assets/images/medias/${medias[index].image}`)
+        image.setAttribute('alt', `Image avec pour titre ${medias[index].title}`)
     }
     if(media.video){
         video.style.display = 'block'
@@ -38,6 +39,7 @@ function showPrevious(){
     if(currentIndex > 0){
         if(sliderMedias[currentIndex - 1].image){
             image.setAttribute('src', `../../assets/images/medias/${sliderMedias[currentIndex - 1].image}`)
+            image.setAttribute('alt', `Image avec pour titre ${sliderMedias[currentIndex - 1].title}`)
             video.style.display = 'none'
             image.style.display = 'block'
         } else {
@@ -49,6 +51,7 @@ function showPrevious(){
     } else {
         if(sliderMedias[sliderMedias.length - 1].image){
             image.setAttribute('src', `../../assets/images/medias/${sliderMedias[sliderMedias.length - 1].image}`)
+            image.setAttribute('alt', `Image avec pour titre ${sliderMedias[sliderMedias.length - 1].title}`)
             video.style.display = 'none'
             image.style.display = 'block'
         } else {
@@ -65,6 +68,7 @@ function showNext(){
     if(currentIndex < sliderMedias.length - 1){
         if(sliderMedias[currentIndex + 1].image){
             image.setAttribute('src', `../../assets/images/medias/${sliderMedias[currentIndex + 1].image}`)
+            image.setAttribute('alt', `Image avec pour titre ${sliderMedias[currentIndex + 1].title}`)
             video.style.display = 'none'
             image.style.display = 'block'
         } else {
@@ -76,6 +80,7 @@ function showNext(){
     } else {
         if(sliderMedias[0].image){
             image.setAttribute('src', `../../assets/images/medias/${sliderMedias[0].image}`)
+            image.setAttribute('alt', `Image avec pour titre ${sliderMedias[0].title}`)
             video.style.display = 'none'
             image.style.display = 'block'
         } else {
