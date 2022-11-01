@@ -4,7 +4,7 @@ function mediaFactory(data){
     function getPhotographerMediaCards(){
 
         const mediaCard = document.createElement('div');
-        mediaCard.classList.add('media-card')
+        mediaCard.classList.add('media-card');
 
         if(image){
             mediaCard.innerHTML = `
