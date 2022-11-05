@@ -38,10 +38,12 @@ async function displayData(photographer, medias){
     medias.forEach((media, index) => {
         const medialModel = mediaFactory(media);
         const mediaCard = medialModel.getPhotographerMediaCards();
+
         mediaCard.setAttribute('tabindex', 0)
-        mediaCard.addEventListener('click', () => openSlideShow(media, index, medias));
-        mediaCard.addEventListener('keypress', () => openSlideShow(media, index, medias));
+        mediaCard.addEventListener('click', () => openSlideShow(main, media, index, medias));
+        mediaCard.addEventListener('keypress', () => openSlideShow(main, media, index, medias));
         mediasContainer.appendChild(mediaCard);
+
         totalLikes += media.likes
     })
 

@@ -3,6 +3,8 @@ const slideshowCloseButton = document.querySelector('.close-slideshow');
 const previousButton = document.querySelector('.previous-slide');
 const nextButton = document.querySelector('.next-slide');
 
+let mediaCards = []
+
 let sliderMedias = []
 let currentIndex = undefined
 
@@ -10,7 +12,12 @@ const image = slideshowModal.querySelector('img');
 const video = slideshowModal.querySelector('video');
 const title = slideshowModal.querySelector('h2');
 
-function openSlideShow(media, index, medias){
+function openSlideShow(main, media, index, medias){
+
+    main.setAttribute('aria-hidden', true);
+    mediaCards = Array.from(main.querySelectorAll('.media-card'))
+    mediaCards.forEach((card) => card.setAttribute('tabindex', -1))
+    slideshowModal.setAttribute('aria-hidden', false)
 
     sliderMedias = medias
     currentIndex = index
@@ -66,6 +73,7 @@ function showPrevious(){
         currentIndex = sliderMedias.length - 1
     }
     title.textContent = sliderMedias[currentIndex].title
+    console.log('media index :',currentIndex)
 }
 
 function showNext(){
@@ -95,8 +103,12 @@ function showNext(){
         currentIndex = 0;
     }
     title.textContent = sliderMedias[currentIndex].title
+    console.log('media index :',currentIndex)
 }
 
 function closeSlideshow(){
     slideshowModal.style.display = "none"
+    main.setAttribute('aria-hidden', false);
+    mediaCards.forEach((card) => card.setAttribute('tabindex', 0))
+    slideshowModal.setAttribute('aria-hidden', true)
 }
