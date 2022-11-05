@@ -76,6 +76,7 @@
 
 .info-block {
     position: fixed;
+    width: 300px;
     bottom: 0px;
     right: 1%;
     display: flex;
@@ -83,7 +84,7 @@
     padding: 10px;
     background-color: #DB8876;
     border-radius: 10px 10px 0px 0px;
-    font-size: 24px;
+    font-size: 22px;
     gap: 80px;
 }
 

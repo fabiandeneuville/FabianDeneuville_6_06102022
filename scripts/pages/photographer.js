@@ -1,6 +1,7 @@
 let params = new URL(document.location).searchParams;
 let photographerId = params.get('id');
 let totalLikes = 0;
+let photographerPrice = 0;
 
 async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
@@ -18,6 +19,7 @@ async function getPhotographerMedias(){
 getPhotographerMedias()
 
 async function displayData(photographer, medias){
+    photographerPrice = photographer.price
     const main = document.getElementById('main');
     const photographerHeader = document.querySelector('.photograph-header');
     const contactButton = document.querySelector('.contact_button');
@@ -36,6 +38,8 @@ async function displayData(photographer, medias){
 
     medias.forEach((media, index) => {
 
+        totalLikes += media.likes
+
         let liked = false
         const medialModel = mediaFactory(media);
         const mediaCard = medialModel.getPhotographerMediaCards();
@@ -43,7 +47,7 @@ async function displayData(photographer, medias){
         const likeButton = mediaCard.querySelector('.likes');
         likeButton.addEventListener('click', (e) => {
             liked = !liked
-            likeMedia(e, media, liked, mediaCard)       
+            likeMedia(e, media, liked, mediaCard, totalLikes)       
         })
 
 
@@ -52,20 +56,16 @@ async function displayData(photographer, medias){
         mediaCard.addEventListener('keypress', () => openSlideShow(main, media, index, medias));
         mediasContainer.appendChild(mediaCard);
 
-        totalLikes += media.likes
     })
 
     main.appendChild(mediasContainer);
 
-    const infosBlock = document.createElement('div');
-    infosBlock.classList.add('info-block');
+    const infosBlock = document.querySelector('.info-block');
+    const totalLikesDisplay = infosBlock.querySelector('.info-block-likes');
+    const priceDisplay = infosBlock.querySelector('.info-block-price');
+    totalLikesDisplay.innerHTML = `${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i>`
+    priceDisplay.innerHTML = `${photographerPrice} €/jour`
 
-    infosBlock.innerHTML = `
-        <span>${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i></span>
-        <span>${photographer.price}€ / jour</span>
-    `
-
-    main.appendChild(infosBlock)
 }
 
 async function init(){
