@@ -1,5 +1,6 @@
 let params = new URL(document.location).searchParams;
 let photographerId = params.get('id');
+let totalLikes = 0;
 
 async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
@@ -33,11 +34,18 @@ async function displayData(photographer, medias){
     const mediasContainer = document.createElement('div');
     mediasContainer.classList.add('media-container');
 
-    let totalLikes = 0;
-
     medias.forEach((media, index) => {
+
+        let liked = false
         const medialModel = mediaFactory(media);
         const mediaCard = medialModel.getPhotographerMediaCards();
+
+        const likeButton = mediaCard.querySelector('.likes');
+        likeButton.addEventListener('click', (e) => {
+            liked = !liked
+            likeMedia(e, media, liked, mediaCard)       
+        })
+
 
         mediaCard.setAttribute('tabindex', 0)
         mediaCard.addEventListener('click', () => openSlideShow(main, media, index, medias));
@@ -53,7 +61,7 @@ async function displayData(photographer, medias){
     infosBlock.classList.add('info-block');
 
     infosBlock.innerHTML = `
-        <span>${totalLikes}<i aria-label="likes" class="fa-solid fa-heart"></i></span>
+        <span>${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i></span>
         <span>${photographer.price}€ / jour</span>
     `
 
