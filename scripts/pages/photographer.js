@@ -3,6 +3,8 @@ let photographerId = params.get('id');
 let totalLikes = 0;
 let photographerPrice = 0;
 
+console.log(sortedBy)
+
 async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographer = data.photographers.find(photographer => photographer.id == photographerId);

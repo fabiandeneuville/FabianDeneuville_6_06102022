@@ -190,6 +190,7 @@ form input, textarea {
 #slideshow_modal {
     display: none;
     position: fixed;
+    z-index: 3;
     background-color: white;
     width: 100vw;
     height: 100vh;
@@ -266,6 +267,71 @@ form input, textarea {
 .close-slideshow, .previous-slide, .next-slide {
     cursor: pointer;
 }
+
+.sort-section {
+    position: relative;
+    width: 90%;
+    margin: 25px auto 0 auto;
+    display: flex;
+    gap: 25px;
+    justify-content: left;
+    height: 100px;
+}
+
+.sort-section p {
+    height: 70px;
+    width: 100px;
+    line-height: 70px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sort-medias {
+    position: absolute;
+    z-index: 2;
+    height: 70px;
+    overflow: hidden;
+    width: 150px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    color: white;
+    left: 100px;
+    cursor: pointer;
+}
+
+.sort-medias.opened {
+    height: 210px;
+}
+
+.sort-medias-icon {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+}
+
+.sort-medias-icon.hide {
+    display: none;
+}
+
+.sort-option {
+    display: none;
+}
+
+.sort-option.active {
+    display: block;
+    height: 70px;
+    padding: 0 10px;
+    line-height: 70px;
+    font-size: 20px;
+}
+
+hr {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+
 
 @media screen and (max-width:992px){
     .photograph-header {
