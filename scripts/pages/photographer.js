@@ -2,6 +2,17 @@ let params = new URL(document.location).searchParams;
 let photographerId = params.get('id');
 let totalLikes = 0;
 let photographerPrice = 0;
+const mediaContainer = document.querySelector('.media-container');
+
+const select = document.querySelector('select');
+select.addEventListener('change', async (e) => {
+    mediaContainer.innerHTML = ``;
+    totalLikes = 0;
+    const medias = await getPhotographerMedias()
+    const sortBy = e.target.value
+    const sortedMedias = sort(medias, sortBy)
+    displayMedias(sortedMedias)
+})
 
 async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
@@ -12,7 +23,6 @@ async function getPhotographer(){
 async function getPhotographerMedias(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographerMedias = data.media.filter((media) => media.photographerId == photographerId);
-
     return photographerMedias;
 } 
 
@@ -36,20 +46,12 @@ async function displayPhotographerData(photographer){
     const mediasContainer = document.createElement('div');
     mediasContainer.classList.add('media-container');
 
-    const infosBlock = document.querySelector('.info-block');
-    const totalLikesDisplay = infosBlock.querySelector('.info-block-likes');
-    const priceDisplay = infosBlock.querySelector('.info-block-price');
-    totalLikesDisplay.textContent = totalLikes
-    priceDisplay.innerHTML = `${photographerPrice} €/jour`
-
 }
 
 async function displayMedias(medias){
-    const mediaContainer = document.querySelector('.media-container');
+
     medias.forEach((media, index) => {
-
         totalLikes += media.likes
-
         let liked = false
         const medialModel = mediaFactory(media);
         const mediaCard = medialModel.getPhotographerMediaCards();
@@ -64,14 +66,34 @@ async function displayMedias(medias){
         mediaCard.addEventListener('click', () => openSlideShow(main, media, index, medias));
         mediaCard.addEventListener('keypress', () => openSlideShow(main, media, index, medias));
         mediaContainer.appendChild(mediaCard);
+
+        const infosBlock = document.querySelector('.info-block');
+        const totalLikesDisplay = infosBlock.querySelector('.info-block-likes');
+        const priceDisplay = infosBlock.querySelector('.info-block-price');
+        totalLikesDisplay.textContent = totalLikes
+        priceDisplay.innerHTML = `${photographerPrice} €/jour`
     })
 }
 
 async function init(){
     const photographer = await getPhotographer();
     const medias = await getPhotographerMedias();
+    const sortedMedias = sort(medias, 'likes')
     displayPhotographerData(photographer);
-    displayMedias(medias)
+    displayMedias(sortedMedias)
 }
 
 init()
+
+function sort(array, value){
+    const sortedArray = array.sort(function(a, b){
+        if(typeof(a[value]) === 'string' && typeof(b[value]) === 'string'){
+            return a[value].localeCompare(b[value])
+        }
+        return a[value] - b[value]
+    })
+    if(value === 'likes'){
+        sortedArray.reverse()
+    }
+    return sortedArray
+}
