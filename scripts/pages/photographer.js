@@ -3,8 +3,6 @@ let photographerId = params.get('id');
 let totalLikes = 0;
 let photographerPrice = 0;
 
-console.log(sortedBy)
-
 async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographer = data.photographers.find(photographer => photographer.id == photographerId);
@@ -20,7 +18,7 @@ async function getPhotographerMedias(){
 
 getPhotographerMedias()
 
-async function displayData(photographer, medias){
+async function displayPhotographerData(photographer){
     photographerPrice = photographer.price
     const main = document.getElementById('main');
     const photographerHeader = document.querySelector('.photograph-header');
@@ -38,6 +36,16 @@ async function displayData(photographer, medias){
     const mediasContainer = document.createElement('div');
     mediasContainer.classList.add('media-container');
 
+    const infosBlock = document.querySelector('.info-block');
+    const totalLikesDisplay = infosBlock.querySelector('.info-block-likes');
+    const priceDisplay = infosBlock.querySelector('.info-block-price');
+    totalLikesDisplay.textContent = totalLikes
+    priceDisplay.innerHTML = `${photographerPrice} €/jour`
+
+}
+
+async function displayMedias(medias){
+    const mediaContainer = document.querySelector('.media-container');
     medias.forEach((media, index) => {
 
         totalLikes += media.likes
@@ -52,28 +60,18 @@ async function displayData(photographer, medias){
             likeMedia(e, media, liked, mediaCard, totalLikes)       
         })
 
-
         mediaCard.setAttribute('tabindex', 0)
         mediaCard.addEventListener('click', () => openSlideShow(main, media, index, medias));
         mediaCard.addEventListener('keypress', () => openSlideShow(main, media, index, medias));
-        mediasContainer.appendChild(mediaCard);
-
+        mediaContainer.appendChild(mediaCard);
     })
-
-    main.appendChild(mediasContainer);
-
-    const infosBlock = document.querySelector('.info-block');
-    const totalLikesDisplay = infosBlock.querySelector('.info-block-likes');
-    const priceDisplay = infosBlock.querySelector('.info-block-price');
-    totalLikesDisplay.textContent = totalLikes
-    priceDisplay.innerHTML = `${photographerPrice} €/jour`
-
 }
 
 async function init(){
     const photographer = await getPhotographer();
     const medias = await getPhotographerMedias();
-    displayData(photographer, medias);
+    displayPhotographerData(photographer);
+    displayMedias(medias)
 }
 
 init()
