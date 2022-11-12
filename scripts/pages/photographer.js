@@ -10,7 +10,7 @@ select.addEventListener('change', async (e) => {
     totalLikes = 0;
     const medias = await getPhotographerMedias()
     const sortBy = e.target.value
-    const sortedMedias = sort(medias, sortBy)
+    const sortedMedias = sortMedias(medias, sortBy)
     displayMedias(sortedMedias)
 })
 
@@ -78,22 +78,9 @@ async function displayMedias(medias){
 async function init(){
     const photographer = await getPhotographer();
     const medias = await getPhotographerMedias();
-    const sortedMedias = sort(medias, 'likes')
+    const sortedMedias = sortMedias(medias, 'likes')
     displayPhotographerData(photographer);
     displayMedias(sortedMedias)
 }
 
 init()
-
-function sort(array, value){
-    const sortedArray = array.sort(function(a, b){
-        if(typeof(a[value]) === 'string' && typeof(b[value]) === 'string'){
-            return a[value].localeCompare(b[value])
-        }
-        return a[value] - b[value]
-    })
-    if(value === 'likes'){
-        sortedArray.reverse()
-    }
-    return sortedArray
-}
