@@ -10,30 +10,37 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+    <!--HEADER START-->
     <header>
       <a href="./index.html" title="Lien vers la page d'accueil" class="focusable-element">
         <img src="assets/images/logo.png" class="logo" alt="logo de l'entreprise FishEye"/>
       </a>
     </header>
+    <!--HEADER END-->
+    <!--MAIN START-->
     <main id="main">
+      <!--PHOTOGRAPHER HEADER START-->
       <div class="photograph-header">
         <button class="contact_button focusable-element">Contactez-moi</button>
       </div>
-
+      <!--PHOTOGRAPHER HEADER END-->
+      <!--SORT SECTION START-->
       <div class="sort-section">
         <label for="sortMedias">Trier par : </label>
-        <select name="sortMedias" id="sortMedias">
-          <option value="likes">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
+        <div role="button" id="sortMedias" title="Trier les medias" class="custom-select" tabindex="0">
+          <i class="arrow fa-solid fa-chevron-down"></i>
+          <div role="button" class="custom-select-option visible" data-value="likes">Popularité</div>
+          <div role="button" class="custom-select-option" data-value="date">Date</div>
+          <div role="button" class="custom-select-option" data-value="title">Titre</div>
         </div>
       </div>
-
+      <!--SORT SECTION END-->
       <div class="media-container">
-
+      <!--MEDIAS TO BE INSERTED HERE-->
       </div>
     </main>
+    <!--MAIN END-->
+    <!--CONTACT MODAL START-->
     <div id="contact_modal" role="dialog" aria-hidden="true">
 			<div class="modal">
 				<header>
@@ -61,8 +68,8 @@
 				</form>
 			</div>
 		</div>
-
-
+    <!--CONTACT MODAL END-->
+    <!--SLIDESHOW MODAL START-->
     <div id="slideshow_modal" role="dialog" aria-hidden="true">
 			<div class="slideshow">
         <i class="close-slideshow fa-solid fa-xmark" role="button" tabindex="0"></i>
@@ -82,17 +89,20 @@
         </div>
 			</div>
 		</div>
+    <!--SLIDESHOW MODAL END-->
+    <!--INFO BLOCK START-->
     <div class="info-block">
       <span>
         <span class="info-block-likes"></span> <i aria-label="total-likes" class="fa-solid fa-heart"></i>
       </span>
       <span class="info-block-price"></span>
     </div>
+    <!--INFO BLOCK END-->
     <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
+    <script src="/scripts/utils/sortMedias.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/like.js"></script>
-    <script src="/scripts/utils/sortMedias.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/slideShow.js"></script>
   </body>

@@ -269,9 +269,10 @@ form input, textarea {
 }
 
 .sort-section {
+    position: relative;
+    height: 100px;
     width: 90%;
-    padding: 0 50px;
-    margin: 50px auto 0 auto;
+    margin: 0 auto;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -279,16 +280,57 @@ form input, textarea {
     gap: 25px;
 }
 
-select {
-    position: relative;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0 10px;
-    height: 50px;
-    font-size: 20px;
-    background-color:#901C1C;
-    color: white;
+.custom-select {
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 150px;
+    height: 60px;
+    background-color: #901C1C;
     border-radius: 5px;
+    overflow: hidden;
+    line-height: 60px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 5;
 }
+
+.custom-select.opened {
+    height: auto;
+}
+
+.custom-select-option {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+    display: none;
+    pointer-events: none;
+}
+
+.custom-select-option:hover {
+    background-color: #DB8876;
+}
+
+.custom-select-option.visible {
+    display: block;
+}
+
+.custom-select-option.clickable {
+    pointer-events: all
+}
+
+.arrow {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.arrow.opened {
+    transform: rotate(180deg);
+}
+
 
 @media screen and (max-width:992px){
     .photograph-header {
