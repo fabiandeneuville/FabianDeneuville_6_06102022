@@ -16,7 +16,7 @@ function mediaFactory(data){
                 </span>
             </div>
             `
-            return mediaCard
+            return mediaCard;
         }
         if(video){
             mediaCard.innerHTML = `
@@ -31,7 +31,7 @@ function mediaFactory(data){
                 </span>
             </div>
             `
-            return mediaCard
+            return mediaCard;
         }
     }
 

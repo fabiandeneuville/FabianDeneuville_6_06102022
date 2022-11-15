@@ -37,7 +37,7 @@ function openSlideShow(main, media, index, medias){
         image.style.display = 'none';
         video.setAttribute('src', `../../assets/images/medias/${medias[index].video}`);
     }
-}
+};
 
 slideshowCloseButton.addEventListener('click', closeSlideshow);
 slideshowCloseButton.addEventListener('keypress', closeSlideshow);
@@ -83,7 +83,7 @@ function showPrevious(){
     }
     title.textContent = sliderMedias[currentIndex].title;
     console.log('media index :',currentIndex);
-}
+};
 
 function showNext(){
     if(currentIndex < sliderMedias.length - 1){
@@ -113,11 +113,11 @@ function showNext(){
     }
     title.textContent = sliderMedias[currentIndex].title;
     console.log('media index :',currentIndex);
-}
+};
 
 function closeSlideshow(){
     slideshowModal.style.display = "none";
     main.setAttribute('aria-hidden', false);
     mediaCards.forEach((card) => card.setAttribute('tabindex', 0));
     slideshowModal.setAttribute('aria-hidden', true);
-}
+};

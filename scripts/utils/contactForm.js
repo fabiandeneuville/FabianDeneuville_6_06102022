@@ -20,15 +20,15 @@ modal.addEventListener('keyup', (e) => {
     if(e.key === "Escape"){
         closeModal();
     }
-})
+});
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     sendForm();
-})
+});
 
 function displayModal() {
-    body.style.overflow = 'hidden'
+    body.style.overflow = 'hidden';
     modal.style.display = "block";
     header.setAttribute('aria-hidden', true);
     main.setAttribute('aria-hidden', true);
@@ -36,16 +36,16 @@ function displayModal() {
     modal.setAttribute('tabindex', 0);
     focusableElements.forEach((element) => element.setAttribute('tabindex', -1));
     firstNameInput.focus();
-}
+};
 
 function closeModal() {
-    body.style.overflow = 'scroll'
+    body.style.overflow = 'scroll';
     modal.style.display = "none";
     header.setAttribute('aria-hidden', false);
     main.setAttribute('aria-hidden', false);
     modal.setAttribute('aria-hidden', true);
     focusableElements.forEach((element) => element.setAttribute('tabindex', 0));
-}
+};
 
 function sendForm(){
     const submitedDatas = {
@@ -53,15 +53,15 @@ function sendForm(){
         name: nameInput.value,
         email: emailInput.value,
         message: messageInput.value
-    }
+    };
     console.log(submitedDatas);
     closeModal();
     clearFields();
-}
+};
 
 function clearFields(){
     firstNameInput.value = '';
     nameInput.value = '';
     emailInput.value = '';
     messageInput.value = ''
-}
+};
