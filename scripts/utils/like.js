@@ -13,4 +13,4 @@ function likeMedia(e, media, liked, mediaCard){
     const likesCounter = mediaCard.querySelector('.likes-count');
     likesCounter.textContent = likesCount;
     totalLikesDisplay.textContent = totalLikes;
-};
+}

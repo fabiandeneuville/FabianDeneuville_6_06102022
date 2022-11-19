@@ -38,7 +38,7 @@ async function handleOptionClick(e){
     const medias = await getPhotographerMedias();
     const sortedMedias = sortMedias(medias, value);
     displayMedias(sortedMedias);
-};
+}
 
 function handleSelectClick(element){
     element.setAttribute('tabindex', -1);
@@ -48,7 +48,7 @@ function handleSelectClick(element){
         option.classList.add('visible','clickable');
         option.setAttribute('tabindex', 1);
     });
-};
+}
 
 /********** Custom select input end **********/
 
@@ -56,13 +56,13 @@ async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographer = data.photographers.find(photographer => photographer.id == photographerId);
     return photographer;
-};
+}
 
 async function getPhotographerMedias(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographerMedias = data.media.filter((media) => media.photographerId == photographerId);
     return photographerMedias;
-};
+}
 
 getPhotographerMedias()
 
@@ -119,6 +119,6 @@ async function init(){
     const sortedMedias = sortMedias(medias, 'likes');
     displayPhotographerData(photographer);
     displayMedias(sortedMedias);
-};
+}
 
 init()

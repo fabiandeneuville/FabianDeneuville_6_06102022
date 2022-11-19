@@ -17,12 +17,12 @@
             link.appendChild(PhotographerProfileCard);
             photographersSection.appendChild(link);
         });
-    };
+    }
 
     async function init() {
         const photographers = await getPhotographers();
         displayData(photographers);
-    };
+    }
     
     init();
     

@@ -9,4 +9,4 @@ function sortMedias(arrayOfMedias, valueToSortBy){
         sortedArray.reverse();
     }
     return sortedArray;
-};
+}
