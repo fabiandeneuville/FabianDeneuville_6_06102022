@@ -1,3 +1,5 @@
+/********** Media likes handling **********/
+
 const totalLikesDisplay = document.querySelector('.info-block-likes');
 
 function likeMedia(e, media, liked, mediaCard){

@@ -1,3 +1,5 @@
+/********** Media factory **********/
+
 function mediaFactory(data){
     const {id, image, likes, price, title, date, photographerId, video} = data;
 
@@ -6,6 +8,7 @@ function mediaFactory(data){
         const mediaCard = document.createElement('div');
         mediaCard.classList.add('media-card');
 
+        // Case when data has image
         if(image){
             mediaCard.innerHTML = `
             <img class="media-miniature" src="../../assets/images/medias/${image}" alt="Image avec pour titre ${title}"/>
@@ -18,6 +21,8 @@ function mediaFactory(data){
             `
             return mediaCard;
         }
+
+        // Case when data has video
         if(video){
             mediaCard.innerHTML = `
             <video class="media-miniature" autoplay>

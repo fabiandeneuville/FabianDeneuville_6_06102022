@@ -1,8 +1,11 @@
+/********** Photographer factory **********/
+
 function photographerFactory(data) {
     const { name, portrait, city, country, id, price, tagline} = data;
 
     const picture = `assets/images/photographers/${portrait}`;
 
+    // Function to display photographer card on index page
     function getPhotographerProfileCard() {
 
         const article = document.createElement( 'article' );
@@ -18,6 +21,7 @@ function photographerFactory(data) {
 
     }
 
+    // Function to display photographer header on photographer page
     function getPhotographerProfileHeader(){
         
         const photographerInfos = document.createElement('div');

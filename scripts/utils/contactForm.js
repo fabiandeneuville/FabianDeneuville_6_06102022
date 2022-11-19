@@ -1,3 +1,5 @@
+/********** Contact form handling **********/
+
 const body = document.querySelector('body');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
@@ -27,6 +29,7 @@ form.addEventListener('submit', (e) => {
     sendForm();
 })
 
+// function to display contact form
 function displayModal() {
     body.style.overflow = 'hidden';
     modal.style.display = "block";
@@ -38,6 +41,7 @@ function displayModal() {
     firstNameInput.focus();
 }
 
+// Function to close contact form
 function closeModal() {
     body.style.overflow = 'scroll';
     modal.style.display = "none";
@@ -47,6 +51,7 @@ function closeModal() {
     focusableElements.forEach((element) => element.setAttribute('tabindex', 0));
 }
 
+// Function to send form
 function sendForm(){
     const submitedDatas = {
         firstname: firstNameInput.value,
@@ -59,6 +64,7 @@ function sendForm(){
     clearFields();
 }
 
+// Function to clear fields when form is sent
 function clearFields(){
     firstNameInput.value = '';
     nameInput.value = '';

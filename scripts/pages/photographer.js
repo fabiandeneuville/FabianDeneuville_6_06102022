@@ -1,3 +1,5 @@
+/********** Photographer page **********/
+
 let params = new URL(document.location).searchParams;
 let photographerId = params.get('id');
 let totalLikes = 0;
@@ -52,12 +54,14 @@ function handleSelectClick(element){
 
 /********** Custom select input end **********/
 
+// Function to get photographer datas
 async function getPhotographer(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographer = data.photographers.find(photographer => photographer.id == photographerId);
     return photographer;
 }
 
+// Function to get photographer medias
 async function getPhotographerMedias(){
     const data = await (await fetch('../../data/photographers.json')).json();
     const photographerMedias = data.media.filter((media) => media.photographerId == photographerId);
@@ -66,6 +70,7 @@ async function getPhotographerMedias(){
 
 getPhotographerMedias()
 
+// Function to display photographer datas
 async function displayPhotographerData(photographer){
     photographerPrice = photographer.price;
     const main = document.getElementById('main');
@@ -86,6 +91,7 @@ async function displayPhotographerData(photographer){
 
 }
 
+// Function to display photographer medias
 async function displayMedias(medias){
 
     medias.forEach((media, index) => {
@@ -113,6 +119,7 @@ async function displayMedias(medias){
     })
 }
 
+// Fnction to display photographer datas and medias when page is loaded
 async function init(){
     const photographer = await getPhotographer();
     const medias = await getPhotographerMedias();

@@ -1,3 +1,5 @@
+/********** Sort media handling **********/
+
 function sortMedias(arrayOfMedias, valueToSortBy){
     const sortedArray = arrayOfMedias.sort(function(a, b){
         if(typeof(a[valueToSortBy]) === 'string' && typeof(b[valueToSortBy]) === 'string'){

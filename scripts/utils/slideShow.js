@@ -1,3 +1,5 @@
+/********** Slideshow handling **********/
+
 const slideshowModal = document.getElementById('slideshow_modal');
 const slideshowCloseButton = document.querySelector('.close-slideshow');
 const previousButton = document.querySelector('.previous-slide');
@@ -12,6 +14,7 @@ const image = slideshowModal.querySelector('img');
 const video = slideshowModal.querySelector('video');
 const title = slideshowModal.querySelector('h2');
 
+// Function to open slideshow
 function openSlideShow(main, media, index, medias){
 
     main.setAttribute('aria-hidden', true);
@@ -55,6 +58,7 @@ document.addEventListener('keydown', (e) => {
     }
 })
 
+// Function to navigate to previous media
 function showPrevious(){
     if(currentIndex > 0){
         if(sliderMedias[currentIndex - 1].image){
@@ -85,6 +89,7 @@ function showPrevious(){
     console.log('media index :',currentIndex);
 }
 
+// Function to navigate to next media
 function showNext(){
     if(currentIndex < sliderMedias.length - 1){
         if(sliderMedias[currentIndex + 1].image){
@@ -115,6 +120,7 @@ function showNext(){
     console.log('media index :',currentIndex);
 }
 
+// Function to close slideshow
 function closeSlideshow(){
     slideshowModal.style.display = "none";
     main.setAttribute('aria-hidden', false);
