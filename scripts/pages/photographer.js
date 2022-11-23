@@ -105,6 +105,10 @@ async function displayMedias(medias){
             liked = !liked;
             likeMedia(e, media, liked, mediaCard, totalLikes);   
         });
+        likeButton.addEventListener('keypress', (e) => {
+            liked = !liked;
+            likeMedia(e, media, liked, mediaCard, totalLikes);   
+        });
 
         mediaCard.setAttribute('tabindex', 0);
         mediaCard.addEventListener('click', () => openSlideShow(main, media, index, medias));
