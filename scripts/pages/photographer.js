@@ -56,14 +56,14 @@ function handleSelectClick(element){
 
 // Function to get photographer datas
 async function getPhotographer(){
-    const data = await (await fetch('../../data/photographers.json')).json();
+    const data = await (await fetch('https://raw.githubusercontent.com/fabiandeneuville/FabianDeneuville_6_06102022/main/data/photographers.json')).json();
     const photographer = data.photographers.find(photographer => photographer.id == photographerId);
     return photographer;
 }
 
 // Function to get photographer medias
 async function getPhotographerMedias(){
-    const data = await (await fetch('../../data/photographers.json')).json();
+    const data = await (await fetch('https://raw.githubusercontent.com/fabiandeneuville/FabianDeneuville_6_06102022/main/data/photographers.json')).json();
     const photographerMedias = data.media.filter((media) => media.photographerId == photographerId);
     return photographerMedias;
 }
